@@ -7,6 +7,10 @@
     "d3": "^4.11.0",
     "jasmine": "^2.8.0",
     "lodash": "^4.17.4",
+    "path": "^0.12.7",
     "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
