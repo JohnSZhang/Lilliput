@@ -1,0 +1,12 @@
+{
+  "name": "Lilliput",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "d3": "^4.11.0",
+    "jasmine": "^2.8.0",
+    "lodash": "^4.17.4",
+    "webpack": "^3.8.1"
+  }
+}
