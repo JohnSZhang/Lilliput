@@ -1,6 +1,7 @@
 /node_modules
 /test/js
-/examples/**/js
+/dist
 .DS_Store
 *.log
 .idea
+*.map
