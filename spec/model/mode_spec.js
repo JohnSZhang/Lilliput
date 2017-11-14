@@ -3,13 +3,6 @@ Model = require("../../src/lib/model.js");
 describe("A test suite of model tests", function () {
     var model;
 
-    beforeAll(function () {
-    });
-
-    beforeEach(function () {
-        model = new Model()
-    });
-
     it('has correct initial step', function () {
         expect(model.step_count).toEqual(0);
     });
@@ -28,13 +21,13 @@ describe("A test suite of model tests", function () {
     });
 
     it('stops correctly on stop function', function(){
-        model.max_step = 1000;
         let stop_crit = function (model) {
             if (model.step_count >= 10){
                 return true;
             }
             return false;
         }
+        model.max_step = 1000;
         model.stop_criteria = stop_crit;
         model.step_til_end();
         expect(model.step_count).toEqual(10);
