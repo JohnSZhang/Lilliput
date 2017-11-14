@@ -65,9 +65,37 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-console.log('hello world')
+"use strict";
+
+
+var model = __webpack_require__(1);
+
+var lilliput = window.lilliput = {};
+lilliput.model = model;
+
+module.exports = lilliput;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Model = function Model(name) {
+    _classCallCheck(this, Model);
+
+    this.name = name;
+};
+
+;
+
+module.exports = Model;
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
