@@ -1,4 +1,5 @@
 let _ = require('lodash');
+let Helper = require('./helper.js');
 
 class Model {
     constructor(opt) {
@@ -14,6 +15,7 @@ class Model {
         this.agents = options.agents;
         this.update_order = options.update_order;
         this.step_count = 0;
+        this.helper = new Helper();
     }
 
     step(){
@@ -52,16 +54,41 @@ class Model {
         }
         switch(this.update_order) {
             case 'seq':
+                this.seq_update();
                 break;
             case 'rand':
+                this.rand_update();
                 break;
-            case 'sim order':
-                break;
-            case 'sim rand':
+            case 'rand act':
+                this.rand_act_update();
                 break;
             default:
-                throw new Error('Unknown agent update order, the valid choices are seq, rand, sim order and sim rand');
+                throw new Error('Unknown agent update order, the valid choices are seq, rand, and rand act');
                 break;
+        }
+    }
+    seq_update(){
+        this.agents.forEach(function (agent) {
+            agent.sense();
+            agent.act();
+        });
+    }
+    rand_update(){
+        let order = this.helper.permutation(this.agents.length);
+        for (let j=0; j<this.agents.length; j++){
+            let agent = this.agents[order[j]];
+            agent.sense();
+            agent.act();
+        }
+    }
+    rand_act_update(){
+        this.agents.forEach(function (agent) {
+            agent.sense();
+        });
+        let order = this.helper.permutation(this.agents.length);
+        for (let j=0; j<this.agents.length; j++) {
+            let agent =this.agents[order[j]];
+            agent.act();
         }
     }
 };
