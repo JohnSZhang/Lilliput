@@ -23,7 +23,7 @@ class Model {
         this.step_count += 1;
     }
 
-    step_til_end(){
+    run_to_end(){
         let stop = false;
         if (this.stop_criteria === undefined) {
             while(this.step_count < this.max_step) {
@@ -35,10 +35,6 @@ class Model {
                 stop = this.stop_criteria(this);
             }
         }
-    }
-
-    start() {
-        this.step_til_end();
     }
 
     set_agents(agents) {

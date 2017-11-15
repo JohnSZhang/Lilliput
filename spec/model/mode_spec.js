@@ -52,7 +52,7 @@ describe("A test suite of model tests", function () {
 
     it('stops correctly on max step', function () {
         model.max_step = 10;
-        model.step_til_end();
+        model.run_to_end();
         expect(model.step_count).toEqual(10);
     });
 
@@ -65,7 +65,7 @@ describe("A test suite of model tests", function () {
         }
         model.max_step = 1000;
         model.stop_criteria = stop_crit;
-        model.step_til_end();
+        model.run_to_end();
         expect(model.step_count).toEqual(10);
     });
 
@@ -76,7 +76,7 @@ describe("A test suite of model tests", function () {
         expect(act_order).toEqual([0, 1, 2, 3, 4]);
     });
 
-    it ('correctly updates agents in random action mode', function () {
+    it ('correctly updates agents in random mode', function () {
         model.update_order = 'rand';
         model.update_agents();
         expect(sense_order).not.toEqual([0, 1, 2, 3, 4]);
@@ -84,7 +84,10 @@ describe("A test suite of model tests", function () {
     });
 
     it ('correctly updates agents in random action mode', function () {
-
+        model.update_order = 'rand act';
+        model.update_agents();
+        expect(sense_order).toEqual([0, 1, 2, 3, 4]);
+        expect(act_order).not.toEqual([0, 1, 2, 3, 4]);
     });
 
 
